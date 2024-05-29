@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import { useAccount, useConnect, useDisconnect } from "wagmi";
-import { ReadCounterValue, SendIncrementTx } from "@/components";
+import { useAccount, useConnect, useDisconnect, useChains } from 'wagmi';
+import { ReadCounterValue, SendIncrementTx } from '@/components';
 
 function App() {
   const account = useAccount();
   const { connectors, connect, status, error } = useConnect();
   const { disconnect } = useDisconnect();
+  const chains = useChains();
 
   return (
     <>
@@ -15,8 +16,12 @@ function App() {
 
         <div>{account.address}</div>
 
-        {account.status === "connected" && (
-          <button type="button" onClick={() => disconnect()}>
+        <h2>Network</h2>
+
+        <div>{chains[0].name}</div>
+
+        {account.status === 'connected' && (
+          <button type='button' onClick={() => disconnect()}>
             Disconnect
           </button>
         )}
@@ -28,7 +33,7 @@ function App() {
           <button
             key={connector.uid}
             onClick={() => connect({ connector })}
-            type="button"
+            type='button'
           >
             {connector.name}
           </button>

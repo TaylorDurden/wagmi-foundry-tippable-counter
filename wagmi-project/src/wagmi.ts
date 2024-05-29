@@ -1,18 +1,17 @@
-import { getDefaultConfig } from "connectkit";
-import { foundry } from "wagmi/chains";
-import { WagmiProvider, useChains, createConfig } from "wagmi";
-import { coinbaseWallet, injected, walletConnect } from "wagmi/connectors";
+import { getDefaultConfig } from 'connectkit';
+import { foundry } from 'wagmi/chains';
+import { createConfig } from 'wagmi';
 
-const walletConnectProjectId = "";
+const walletConnectProjectId = '';
 export const config = createConfig(
   getDefaultConfig({
-    appName: "My wagmi + ConnectKit App",
+    appName: 'My wagmi + ConnectKit App',
     chains: [foundry],
     walletConnectProjectId,
   })
 );
 
-declare module "wagmi" {
+declare module 'wagmi' {
   interface Register {
     config: typeof config;
   }

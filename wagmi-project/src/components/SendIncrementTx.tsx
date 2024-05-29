@@ -1,22 +1,18 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { parseAbi } from "viem";
-import { useWriteContract } from "wagmi";
+import { useState } from 'react';
+import { parseAbi } from 'viem';
+import { useWriteContract } from 'wagmi';
 
 export default function SendIncrementTx() {
   const [incrementAmt, setIncrementAmt] = useState(1);
-  // const {config} = new UseWriteContractParameters(
-  //   address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-  //   abi: parseAbi(["function increment(uint8 incrementBy) external payable"]),
-  //   functionName: "increment",
-  // });
   const { writeContract } = useWriteContract();
 
   return (
     <div>
+      <p>-----------------------------------------------------------</p>
       <input
-        type="number"
+        type='number'
         min={1}
         max={10}
         step={1}
@@ -26,11 +22,11 @@ export default function SendIncrementTx() {
       <button
         onClick={() => {
           writeContract({
-            address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+            address: '0xe7f1725e7734ce288f8367e1bb143e90bb3f0512',
             abi: parseAbi([
-              "function increment(uint8 incrementBy) external payable",
+              'function increment(uint8 incrementBy) external payable',
             ]),
-            functionName: "increment",
+            functionName: 'increment',
             args: [incrementAmt],
             value: BigInt(10000000000000000),
           });
