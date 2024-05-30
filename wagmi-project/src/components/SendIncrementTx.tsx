@@ -3,14 +3,22 @@
 import { useState } from 'react';
 import { parseAbi } from 'viem';
 import { useWriteContract } from 'wagmi';
+import { mutate } from 'swr';
+import useWaitForIndex from '../hooks/useWaitForIndex';
 
 export default function SendIncrementTx() {
   const [incrementAmt, setIncrementAmt] = useState(1);
   const { writeContract } = useWriteContract();
+  // useWaitForIndex({
+  //   hash: writeContract?.,
+  //   onIndexed() {
+  //     mutate('indexedEvents');
+  //   },
+  // });
 
   return (
     <div>
-      <p>-----------------------------------------------------------</p>
+      <h2>Send Increment</h2>
       <input
         type='number'
         min={1}
@@ -22,7 +30,7 @@ export default function SendIncrementTx() {
       <button
         onClick={() => {
           writeContract({
-            address: '0xe7f1725e7734ce288f8367e1bb143e90bb3f0512',
+            address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
             abi: parseAbi([
               'function increment(uint8 incrementBy) external payable',
             ]),

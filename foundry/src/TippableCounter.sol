@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
-import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "openzeppelin-contracts/contracts/access/Ownable.sol";
 
 contract TippableCounter is Ownable {
     uint256 public counter;
@@ -9,7 +9,8 @@ contract TippableCounter is Ownable {
     event Incremented(
         address indexed sender,
         uint8 incrementedBy,
-        uint256 ethSent
+        uint256 ethSent,
+        uint256 counter
     );
 
     constructor() Ownable(msg.sender) {}
@@ -22,7 +23,7 @@ contract TippableCounter is Ownable {
         );
         counter += incrementBy;
 
-        emit Incremented(msg.sender, incrementBy, msg.value);
+        emit Incremented(msg.sender, incrementBy, msg.value, counter);
     }
 
     function withdraw() external onlyOwner {

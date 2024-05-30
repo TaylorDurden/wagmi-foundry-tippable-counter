@@ -1,7 +1,7 @@
 'use client';
 
 import { useAccount, useConnect, useDisconnect, useChains } from 'wagmi';
-import { ReadCounterValue, SendIncrementTx } from '@/components';
+import { ReadCounterValue, SendIncrementTx, IndexedEvents } from '@/components';
 
 function App() {
   const account = useAccount();
@@ -43,6 +43,7 @@ function App() {
       </div>
       <ReadCounterValue />
       <SendIncrementTx />
+      <IndexedEvents />
     </>
   );
 }

@@ -11,9 +11,12 @@
   "dependencies": {
     "@tanstack/react-query": "5.0.5",
     "connectkit": "^1.7.3",
+    "graphql": "^16.8.1",
+    "graphql-request": "^7.0.1",
     "next": "13.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "swr": "^2.2.5",
     "viem": "latest",
     "wagmi": "latest"
   },
