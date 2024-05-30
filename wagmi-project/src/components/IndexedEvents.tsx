@@ -40,6 +40,7 @@ export function IndexedEvents() {
         data?.events?.items?.map((e: Event, idx: number) => (
           <div key={idx}>
             <p>Index: {idx}</p>
+            <p>Transaction Hash: {e.transactionHash}</p>
             <p>Sender: {e.sender}</p>
             <p>Incremened By: {e.incrementedBy}</p>
             <p>Counter Value: {e.counterValue}</p>
